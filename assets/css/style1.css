@@ -1,0 +1,71 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  background: 
+  linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), /* Полупрозрачный градиент */
+  url("../img/background.gif") top right no-repeat; /* Ваше фоновое изображение */
+background-size: cover; /* Масштабирование изображения, чтобы покрыть весь экран */
+background-position: center center; /* Центрирование изображения */
+background-attachment: fixed; /* Фиксируем фон при прокрутке */
+}
+
+.recipe-page {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  color: #333;
+  text-align: center;
+  margin: 20px 0;
+}
+
+ul, ol {
+  margin: 20px 0;
+  padding-left: 40px;
+}
+
+li {
+  margin: 5px 0;
+}
+
+.back-link {
+  display: block;
+  margin-top: 30px;
+  text-align: center;
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
