@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Китайская кухня</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* Убираем фиксированное позиционирование */
+    #header {
+      position: static; /* Статическое позиционирование (по умолчанию) */
+      width: 100%;
+      height: 70px; /* Фиксированная высота */
+      background-color: #fff; /* Задний фон шапки */
+      display: flex;
+      align-items: center; /* Центрируем по вертикали */
+      justify-content: space-between; /* Разделяем элементы по сторонам */
+      padding: 0 20px; /* Внутренние отступы */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень для отделения */
+    }
+
+    h1 {
+  font-size: 30px;
+  font-weight: 400;
+  color: #222;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+h1:hover {
+  color: #fff;
+  text-shadow: 0 0 5px #1e3a9f,
+              0 0 25px #1e3a9f,
+              0 0 50px #1e3a9f,
+              0 0 100px #1e3a9f;
+}
+
+    /* Основной контейнер для контента */
+    #main {
+      margin-top: 0px; /* Убираем отступ сверху, чтобы контент не перекрывался шапкой */
+    }
+
+    /* Убираем внутренние отступы у body и html */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* Стили для логотипа и navbar */
+    #logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    #navbar ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #navbar ul li {
+      margin: 0 15px; /* Отступы между пунктами меню */
+    }
+
+    #navbar ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 10px 15px;
+      transition: all 0.3s;
+    }
+
+    #navbar ul li a:hover,
+    #navbar ul li a.active {
+      color: #007bff; /* Цвет при наведении или активной странице */
+      border-bottom: 2px solid #007bff; /* Подчёркивание активной ссылки */
+    }
+
+    /* Для мобильных устройств */
+    .mobile-nav-toggle {
+      display: none;
+    }
+
+    /* Мобильные стили */
+    @media (max-width: 768px) {
+      #navbar ul {
+        flex-direction: column; /* Вертикальное меню */
+        position: relative;
+        top: 0; /* Отменяем смещение */
+        left: 0;
+        width: 100%;
+        background: #fff;
+        display: none; /* По умолчанию скрыто */
+      }
+
+      .mobile-nav-toggle {
+        display: block; /* Показать иконку меню */
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      #navbar ul.show {
+        display: flex; /* Показываем меню при активации */
+      }
+    }
+
+    /* Стили для sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 998;
+  background: #ffffff00;
+  padding-top: 188px; /* Чтобы меню не перекрывалось header */
+  text-align: left;
+  margin: 0px;
+  line-height: 30px;
+}
+
+.sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar ul li {
+      position: relative; /* Позиционирование для дочерних элементов */
+      padding: 15px 20px;
+    }
+
+    .sidebar ul li a i {
+      transition: transform 0.3s ease; /* Переход для иконок */
+    }
+
+    .sidebar ul li a span {
+      opacity: 0; /* Исходная непрозрачность текста */
+      transform: translateX(-20px); /* Исходное смещение текста */
+      transition: opacity 0.3s ease, transform 0.3s ease; /* Переход для текста */
+    }
+
+    /* Эффект при наведении */
+    .sidebar ul li:hover a i {
+      transform: scale(1.2); /* Увеличение иконки при наведении */
+    }
+
+    .sidebar ul li:hover a span {
+      opacity: 1; /* Делаем текст видимым при наведении */
+      transform: translateX(0); /* Убираем смещение текста при наведении */
+    }
+
+.sidebar .nav-menu {
+  padding: 0;
+  margin: 0;
+  
+}
+
+.sidebar .nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.sidebar .nav-menu ul li {
+  padding: 15px 20px;
+  
+}
+
+.sidebar .nav-menu ul li a {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .nav-menu ul li a:hover,
+.sidebar .nav-menu ul li.active a {
+  background: #0563bb;
+  border-radius: 5px;
+}
+
+  </style>
+
+</head>
+
+<body>
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <div class="container d-flex justify-content-between align-items-center">
+      <div id="logo">
+        <h1><a href="#header">Китайская <span>Кухня</span></a></h1>
+      </div>
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="#header" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Главная</span></a></li>
+        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Блюда</span></a></li>
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Контакты</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+
+  <aside id="sidebar" class="sidebar">
+    
+    <ul>
+      <li><a href="#header" class="underline-one"><i class="bx bx-home"></i> <span>Главная</span></a></li>
+      <li><a href="#about" class="underline-one"><i class="bx bx-file-blank"></i> <span>Блюда</span></a></li> 
+      <li><a href="#contact" class="underline-one"><i class="bx bx-envelope"></i> <span>Контакты</span></a></li>
+    </ul>
+
+  </aside><!-- End Sidebar -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <h2>Китайская</h2>
+      <h2> Кухня</h2>
+      <p>Блюда в Китае самые: <span class="typed" data-typed-items="Вкусные, Ссытные, Острые, Нежные, Пряные, "></span></p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/galinkap86?igsh=OHcwYjMwemQ2NDYx" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Блюда</h2>
+          <p>Китайская еда отличается разнообразием вкусов и техник приготовления, используя богатство специй и ингредиентов, таких как рис, лапша, овощи и мясо, создавая уникальные сочетания, от пряных и острых до нежных и сладких блюд.. </p>
+        </div>
+
+          <div class="row">
+            <a href="1.html" class="card-link">
+              <div class="card">
+                  <img src="assets\img\1.jpg" alt="Утка по-пекински" class="card-image">
+                  <h6>Утка по-пекински</h6>
+                  <p class="calories">354 ккал</p>
+                  <p class="description">Нежное ароматное мясо под румяной корочкой - тает во рту!</p>
+            </a>
+              </div>
+            
+          <div class="card">
+            <a href="2.html" class="card-link">
+              <img src="assets\img\2.jpg" alt="Лагман из говядины" class="card-image">
+              <h6>Лагман из говядины в домашних условиях</h6>
+              <p class="calories">151 ккал</p>
+              <p class="description">С насыщенным вкусом, яркий, ароматный, для всей семьи.</p>
+            </a>
+          </div>
+          <div class="card">
+            <a href="3.html" class="card-link">
+              <img src="assets\img\3.jpg" alt="Баклажаны жареные" class="card-image">
+              <h6>Баклажаны жареные в кляре</h6>
+              <p class="calories">112 ккал</p>
+              <p class="description">Ароматные, пикантные, невероятно вкусные! Просто и быстро!</p>
+            </a>
+          </div>
+          <div class="card">
+            <a href="4.html" class="card-link">
+              <img src="assets\img\4.jpg" alt="Соус унаги" class="card-image">
+              <h6>Соус унаги в домашних условиях</h6>
+              <p class="calories">491 ккал</p>
+              <p class="description">Универсальный соус, подходит к мясу и рыбе.</p>
+            </a>
+          </div>
+          <div class="card">
+            <a href="5.html" class="card-link">
+              <img src="assets\img\5.jpg" alt="Битые огурцы" class="card-image">
+              <h6>Битые огурцы по-китайски</h6>
+              <p class="calories">72 ккал</p>
+              <p class="description">Усвежающий и пряный огуречный салат.</p>
+            </a>
+          </div>
+          <div class="card">
+            <a href="6.html" class="card-link">
+              <img src="assets\img\6.jpg" alt="Китайские пельмени" class="card-image">
+              <h6>Китайские пельмени</h6>
+              <p class="calories">176 ккал</p>
+              <p class="description">Нежные пельмени с сочной начинкой.</p>
+            </a>
+          </div>
+             <div class="card">
+            <a href="7.html" class="card-link">   
+              <img src="assets\img\7.jpg" alt="Лагман на костре" class="card-image">
+              <h6>Лагман на костре в казане</h6>
+              <p class="calories">99 ккал</p>
+              <p class="description">Ароматнейшее и вкуснейшее блюдо с запахом костра!</p>
+            </a>
+            </div> 
+          <div class="card">
+            <a href="8.html" class="card-link">
+              <img src="assets\img\8.jpg" alt="Курица с овощами" class="card-image">
+              <h6>Курица с овощами в кисло-сладком соусе</h6>
+              <p class="calories">126 ккал</p>
+              <p class="description">Оригинальная, в азиатском стиле, невероятно легкая и вкусная.</p>
+            </a>
+          </div>
+          <div class="card">
+            <a href="9.html" class="card-link">
+              <img src="assets\img\9.jpg" alt="Овощи в соевом соусе" class="card-image">
+              <h6>Овощи в соевом соусе на сковороде по-китайски</h6>
+              <p class="calories">119 ккал</p>
+              <p class="description">На скорую руку, полезно, вкусно, праздник каждый день!</p>
+            </a>
+          </div>
+          <div class="card">
+            <a href="10.html" class="card-link">
+              <img src="assets\img\10.jpg" alt="Свинина в кисло-сладком соусе" class="card-image">
+              <h6>Свинина в кисло-сладком соусе по-китайски</h6>
+              <p class="calories">205 ккал</p>
+              <p class="description">Пряная, сладкая с кислинкой свинина - просто идеальна!</p>
+            </a>
+          </div>
+          <div class="card">
+            <a href="11.html" class="card-link">
+              <img src="assets\img\11.jpg" alt="Печенье с пожеланием" class="card-image">
+              <h6>Печенье с пожеланием к Новому году</h6>
+              <p class="calories">341 ккал</p>
+              <p class="description">Печенье из кино и для романтиков! Готовь дома и желай, чего хочешь!</p>
+            </a>
+          </div>
+          <div class="card">
+            <a href="12.html" class="card-link">
+              <img src="assets\img\12.jpg" alt="Говядина в соевом соусе" class="card-image">
+              <h6>Говядина в соевом соусе</h6>
+              <p class="calories">153 ккал</p>
+              <p class="description">Пикантный, острый, необычный вкус, из доступных продуктов!</p>
+            </a>
+          </div>
+      <div class="card">
+        <a href="13.html" class="card-link">
+        <img src="assets\img\13.jpg" alt="Китайская лапша с говядиной и спаржей в соусе терияки" class="card-image">
+        <h6>Китайская лапша с говядиной и спаржей в соусе терияки</h6>
+        <p class="calories">122 ккал</p>
+        <p class="description">Китайская лапша с говядиной и спаржей в соусе терияки!</p>
+      </a>
+    </div>
+      <div class="card">
+      <a href="14.html" class="card-link">
+        <img src="assets\img\14.jpg" alt="Соус с ананасами" class="card-image">
+        <h6>Кисло-сладкий соус с ананасами китайский</h6>
+        <p class="calories">145 ккал</p>
+        <p class="description">Очень вкусный, оригинальный, необычный, на скорую руку.</p>
+      </a>
+    </div>
+    <div class="card">
+      <a href="15.html" class="card-link">
+        <img src="assets\img\15.jpg" alt="Габаджоу" class="card-image">
+        <h6>Габаджоу в кисло-сладком соусе по китайски</h6>
+        <p class="calories">384 ккал</p>
+        <p class="description">Хочешь попробывать любимое блюдо Конфуция?</p>
+      </a>
+    </div>
+    <div class="card">
+      <a href="16.html" class="card-link">
+        <img src="assets\img\16.jpg" alt="Фунчоза с говядиной и овощами" class="card-image">
+        <h6>Фунчоза с говядиной и овощами</h6>
+        <p class="calories">171 ккал</p>
+        <p class="description">Яркий, красивый салат на праздник и на каждый день!</p>
+      </a>
+    </div>
+    <div class="card">
+      <a href="17.html" class="card-link">
+        <img src="assets\img\17.jpg" alt="Вонтоны" class="card-image">
+        <h6>Вонтоны</h6>
+        <p class="calories">227 ккал</p>
+        <p class="description">Оригинальные, пикантные, необычный вкус и оформление.</p>
+      </a>
+    </div>
+    <div class="card">
+      <a href="18.html" class="card-link">
+        <img src="assets\img\18.jpg" alt="Острое мясо с овощами" class="card-image">
+        <h6>Острое мясо с овощами</h6>
+        <p class="calories">234 ккал</p>
+        <p class="description">Аппетитно, пикантно, ярко и сытно. Блюдо с огоньком!</p>
+      </a>
+    </div>
+    <div class="card"> 
+      <a href="19.html" class="card-link">  
+      <img src="assets\img\19.jpg" alt="Лепешки с мясом" class="card-image">
+      <h6>Китайские лепешки с мясом</h6>
+      <p class="calories">307 ккал</p>
+      <p class="description">Рецепт просто бомба! Если хочешь удивить своих близких приготовь!</p>
+    </a>
+  </div>
+    <div class="card">
+      <a href="20.html" class="card-link">
+      <img src="assets\img\20.jpg" alt="Лапша вок" class="card-image">
+      <h6>Лапша вок с говядиной и овощами</h6>
+      <p class="calories">123 ккал</p>
+      <p class="description">Просто рецепт, а блюдо очень вкусное и ароматное.</p>
+     </a>
+  </div>
+  <div class="card">
+    <a href="21.html" class="card-link">
+      <img src="assets\img\21.jpg" alt="Жареный рис с овощами по китайски" class="card-image">
+      <h6>Жареный рис с овощами по китайски</h6>
+      <p class="calories">129 ккал</p>
+      <p class="description">Очень простое блюдо с китайским колоритом для любимой семьи!</p>
+    </a>
+  </div>
+  <div class="card">
+    <a href="22.html" class="card-link">
+      <img src="assets\img\22.jpg" alt="Маринованные сердечки" class="card-image">
+      <h6>Маринованные сердечки</h6>
+      <p class="calories">149 ккал</p>
+      <p class="description">Приготовь азиатскую закуску! Самый лучший маринад!</p>
+    </a>
+  </div>
+  <div class="card">
+    <a href="23.html" class="card-link">
+      <img src="assets\img\23.jpg" alt="Китайские чисанчи" class="card-image">
+      <h6>Китайские чисанчи</h6>
+      <p class="calories">95 ккал</p>
+      <p class="description">Попробуй эти потрясающие овощи в соевом соусе!</p>
+    </a>
+  </div>
+  <div class="card">
+    <a href="24.html" class="card-link">
+      <img src="assets\img\24.jpg" alt="Фунчоза с курицей и грибами" class="card-image">
+      <h6>Фунчоза с курицей и грибами</h6>
+      <p class="calories">173 ккал</p>
+      <p class="description">Вкусный, яркий, сытный ужин для всей семьи на каждый день!</p>
+    </a>
+  </div>
+  <div class="card">
+    <a href="25.html" class="card-link">
+    <img src="assets\img\25.jpg" alt="Рис в китайском соусе" class="card-image">
+    <h6>Рис в китайском соусе</h6>
+    <p class="calories">283 ккал</p>
+    <p class="description">Внеси разнообразие в семейное меню - родные оценят!</p>
+    </a>
+</div>       
+  <div class="card">
+    <a href="26.html" class="card-link">
+    <img src="assets\img\26.jpg" alt="Китайский черный соус" class="card-image">
+    <h6>Китайский черный соус</h6>
+    <p class="calories">438 ккал</p>
+    <p class="description">Традиционная приправа из черных бобов.</p>
+  </a>
+</div>
+<div class="card">
+  <a href="27.html" class="card-link">
+    <img src="assets\img\27.jpg" alt="Китайский сливочный соус" class="card-image">
+    <h6>Китайский сливочный соус</h6>
+    <p class="calories">257 ккал</p>
+    <p class="description">Идеальный белый сливочный соус к рыбе найден!</p>
+  </a>
+</div>
+<div class="card">
+  <a href="28.html" class="card-link">
+    <img src="assets\img\28.jpg" alt="Красный китайский соус" class="card-image">
+    <h6>Красный китайский соус</h6>
+    <p class="calories">93 ккал</p>
+    <p class="description">У этого соуса красивый цвет и восхитительный аромат!</p>
+  </a>
+</div>
+<div class="card">
+  <a href="29.html" class="card-link">
+    <img src="assets\img\29.jpg" alt="Китайский острый соус" class="card-image">
+    <h6>Китайский острый соус</h6>
+    <p class="calories">158 ккал</p>
+    <p class="description">Невероятное сочетание острого и сладкого в одном соусе!</p>
+  </a>
+</div>
+<div class="card">
+  <a href="30.html" class="card-link">
+    <img src="assets\img\30.jpg" alt="Китайский устричный соус" class="card-image">
+    <h6>Китайский устричный соус</h6>
+    <p class="calories">99 ккал</p>
+    <p class="description">Простой рецепт популярной китайской приправы</p>
+  </a>
+</div>
+</div>
+    </section><!-- End About Section -->
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Контакты</h2>
+        </div>
+
+        <div class="row mt-1">
+          
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <a href="https://maps.app.goo.gl/PHqHaPrZtgGByXpPA" target="_blank" class="location-link" title="Открыть в Google Maps">
+                  <i class="bi bi-geo-alt"></i>
+                </a>
+                <h4>Место:</h4>
+                <p>Республика Казахстан. Алматинская обл. г.Қонаев</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>safonkin0810@gmail.com@egmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Телефон:</h4>
+                <p>+7 777 051 6523</p>
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>China Kitchen</h3>
+      <p>Изысканная китайская кухня: традиции, качество, уважение к культуре и любовь к гостям.</p>
+  
+      <div class="social-links">
+        <a href="https://www.instagram.com/yourprofile" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://wa.me/yourwhatsapp" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+        <a href="https://www.tripadvisor.com/yourrestaurant" class="tripadvisor"><i class="bx bxl-trip-advisor"></i></a>
+      </div>
+  
+      <div class="copyright">
+        &copy; <strong><span>China Kitchen</span></strong>. Все права защищены
+      </div>
+  
+      <div class="credits">
+        Разработано с любовью к китайской культуре — <a href="https://yourdesignerprofile.com">Safonkin Arthur</a>
+      </div>
+    </div>
+  </footer>
+  
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
